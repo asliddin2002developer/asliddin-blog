@@ -23,7 +23,7 @@ ckeditor = CKEditor(app)
 Bootstrap(app)
 
 ##CONNECT TO DB
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL')
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('HEROKU_POSTGRESQL_JADE_URL')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
@@ -126,7 +126,7 @@ def register():
         hashed_password = generate_password_hash(form.password.data, method='pbkdf2:sha256', salt_length=8)
         email = form.email.data
         new_user = User(
-            email=form.email.data,
+            email=email,
             password=hashed_password,
             name=form.name.data
         )
