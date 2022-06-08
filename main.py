@@ -123,7 +123,7 @@ def register():
             flash("This email already exist. Please Log in instead")
             return redirect(url_for('login'))
 
-        hashed_password = generate_password_hash(form.password.data, method='pbkdf2:sha256', salt_length=8)
+        hashed_password = generate_password_hash(form.password.data, method='pbkdf2:sha256', salt_length=4)
         email = form.email.data
         new_user = User(
             email=email,
