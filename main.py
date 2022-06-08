@@ -49,9 +49,9 @@ class User(UserMixin, db.Model):
     __tablename__ = 'users'
 
     id = db.Column(db.Integer, primary_key=True)
-    email = db.Column(db.String(50), unique=True)
-    password = db.Column(db.String(50), unique=True, nullable=False)
-    name = db.Column(db.String(50))
+    email = db.Column(db.String(45), unique=True)
+    password = db.Column(db.String(45), unique=True, nullable=False)
+    name = db.Column(db.String(45))
 
     posts = relationship('BlogPost', back_populates='author')
 
